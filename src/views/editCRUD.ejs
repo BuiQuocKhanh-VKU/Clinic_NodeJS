@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit user information</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class ="container"> 
+        <div class = "row">
+            <form action = "/put-crud" method ="POST">
+               
+                <div class="form-row">
+                    <div class ="col-12 mt-3">  update user information    </div>
+                  <div class="form-group col-md-6">
+                    <label for="firstName">first name</label>
+                    <input type="text" class="form-control" name ="firstName" placeholder="first name" value="<%= user.firstName %>">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="lastName">last name</label>
+                    <input type="text" class="form-control" name ="lastName" placeholder="last name" value="<%= user.lastName %>">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="address">address</label>
+                  <input type="text" class="form-control" name="address" placeholder="1234 Main St" value="<%= user.address %>">
+                </div>
+                <input type="text" name ="id" value="<%= user.id %>" hidden>
+             
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div>
+                </div>
+              
+                
+                <button type="submit" class="btn btn-primary">Update </button>
+            </form>       
+        </div>
+    </div>
+       <!-- jQuery and Bootstrap JS -->
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

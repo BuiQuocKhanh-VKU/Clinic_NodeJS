@@ -1,0 +1,60 @@
+{
+	"git.ignoreLimitWarning": true,
+	// "smoothType.enable": true,
+	// "smoothType.delay": 150, // Tốc độ gõ mượt, bạn có thể điều chỉnh thông số này
+	// "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace", // Font lập trình phổ biến
+	// //"editor.fontSize": 13, // Kích thước font chữ
+	// "editor.lineHeight": 22, // Chiều cao dòng
+	// "editor.fontLigatures": true, // Sử dụng font có ligature (như Fira Code)
+	// // Định dạng và kiểm tra cú pháp
+	// "files.autoSave": "afterDelay",
+	// // "editor.formatOnSave": true, // Tự động định dạng khi lưu file
+	// "editor.tabSize": 2, // Kích thước tab (sử dụng 2 khoảng trắng)
+	// "editor.detectIndentation": false, // Giữ nguyên kích thước tab theo cấu hình
+	// "files.trimTrailingWhitespace": true, // Xóa khoảng trắng dư thừa khi lưu
+	// "files.insertFinalNewline": true, // Tự động thêm dòng trắng cuối file
+	// // PHP Specific
+	// //"php.validate.executablePath": "D:/xampp/php/php.exe", // Đường dẫn tới file php.exe
+	// "php.suggest.basic": true, // Tự động gợi ý cú pháp PHP
+	// "php.validate.run": "onSave", // Kiểm tra cú pháp PHP khi lưu
+	// // JavaScript/TypeScript settings
+	// "javascript.format.enable": true, // Bật định dạng tự động cho JavaScript
+	// "typescript.validate.enable": true, // Bật kiểm tra cú pháp TypeScript
+	// // Git
+	// "git.enableSmartCommit": true, // Tự động commit nếu không có thay đổi staged
+	// "git.autofetch": true, // Tự động fetch từ remote repo
+	// // Terminal
+	// "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe", // Sử dụng Git Bash làm shell mặc định trên Windows
+	// // Cài đặt ngôn ngữ cụ thể
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	// Extensions suggestions
+	"extensions.autoUpdate": true, // Tự động cập nhật extensions
+	"extensions.ignoreRecommendations": false, // Đề xuất các extension liên quan
+	// Cấu hình nâng cao
+	// "explorer.confirmDelete": false, // Tắt xác nhận khi xóa file
+	// "breadcrumbs.enabled": true, // Bật breadcrumb (đường dẫn tập tin) ở trên cùng của cửa sổ editor
+	// "editor.minimap.enabled": true, // Bật hiển thị minimap
+	// "editor.wordWrap": "on", // Tự động xuống dòng khi quá dài
+	// "editor.smoothScrolling": true, // Cuộn trang mượt mà
+	// "editor.cursorBlinking": "phase", // Hiệu ứng nhấp nháy con trỏ
+	// // Các tùy chọn khác
+	// "window.zoomLevel": 0, // Đặt mức zoom của cửa sổ VS Code
+	// "emmet.includeLanguages": {
+	// 	"php": "html"
+	// },
+	// //"workbench.iconTheme": "vscode-icons", // Hỗ trợ Emmet trong PHP files
+	"vscode_custom_css.imports": [
+		"file:///C:/Users/ASUS/Documents/custom.css"
+	],
+	"[xslt]": {
+		"editor.semanticHighlighting.enabled": true
+	}
+}
