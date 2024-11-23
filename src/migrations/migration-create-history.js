@@ -15,7 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
+      },
+      files: {
+        type: Sequelize.TEXT
       },
     
 
