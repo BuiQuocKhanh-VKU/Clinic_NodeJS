@@ -2,7 +2,7 @@
 import bcrypt from 'bcryptjs';
 import db from '../models/index';
 import { raw } from 'body-parser';
-import { up } from '../seeders/20241015154515-demo-user';
+import { up } from '../seeders/seeder-users';
 
 let createNewUser = async (data) => {
     try {
