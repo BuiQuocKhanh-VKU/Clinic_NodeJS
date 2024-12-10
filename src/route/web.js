@@ -12,16 +12,19 @@ let initWebRoutes = (app) => {
     router.post("/post-crud", homeController.postCRUD);
 
     router.get("/get-crud", homeController.displayGetCRUD);
-    router.get("/edit-crud", homeController.getEditCRUD);     
+    router.get("/edit-crud", homeController.getEditCRUD);
     router.post("/put-crud", homeController.putCRUD);
     router.get("/delete-crud", homeController.deleteCRUD);
 
-    router.post('/api/login',userController.handleLogin);
+    router.post('/api/login', userController.handleLogin);
     router.get('/api/get-all-users', userController.handleGetAllUsers); //api lay tat ca nguoi dung 
     router.post('/api/create-new-user', userController.handleCreateNewUser); //api tao moi nguoi dung (lay du lieu tu la post)
     router.put('/api/edit-user', userController.handleEditUser); //api sua nguoi dung (sua doi du lieu dung put)
     router.delete('/api/delete-user', userController.handleDeleteUser); //api xoa nguoi dung (xoa du lieu dung delete)
-            //rest api
+    //rest api
+
+    router.get('/api/allcode', userController.getAllCode);
+
     return app.use("/", router);
 };
 module.exports = initWebRoutes;

@@ -23,7 +23,7 @@ let handleUserLogin = (email, password) => {
             if (isExist) {
                 //user email exist
                 let user = await db.User.findOne({
-                    atributes: ['email', 'roleId', 'password'],
+                    atributes: ['email', 'roleId', 'password', 'firstName', 'lastName'],
                     where: { email: email },
                     raw: true, // lay du lieu theo kieu object
                 })
@@ -111,18 +111,19 @@ let createNewUser = (data) => {
                     errMessage: 'Your email is already in used, pls try another email'
                 })
             } else {
-                 //hash password trc khi tao ng dung
-            let hashPasswordFromBcrypt = await hashUserPassword(data.password);
-            await db.User.create({
-                email: data.email,
-                password: hashPasswordFromBcrypt,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                address: data.address,
-                phonenumber: data.phonenumber,
-                gender: data.gender === '1' ? true : false,
-                roleId: data.roleId,
-            });
+                //hash password trc khi tao ng dung
+                let hashPasswordFromBcrypt = await hashUserPassword(data.password);
+                await db.User.create({
+                    email: data.email,
+                    password: hashPasswordFromBcrypt,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    address: data.address,
+                    phonenumber: data.phonenumber,
+                    gender: data.gender,
+                    roleId: data.roleId,
+                    positionId: data.positionId,
+                });
             }
 
 
@@ -138,9 +139,9 @@ let createNewUser = (data) => {
 }
 
 let deleteUser = (userId) => {   //tim nguoi dung trc khi xoa
-    return new Promise(async( resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         let foundUser = await db.User.findOne({
-            where: {id: userId}
+            where: { id: userId }
         })
         if (!foundUser) {   //tim thay user r xoa
             resolve({
@@ -150,25 +151,25 @@ let deleteUser = (userId) => {   //tim nguoi dung trc khi xoa
         }
 
         await db.User.destroy({
-            where: {id: userId}
+            where: { id: userId }
         })
     })
 }
 
 let updateUserData = (data) => {
-    return new Promise (async( resolve, reject )=> {
+    return new Promise(async (resolve, reject) => {
         try {
-            if(!data.id){   //truyen id truoc khi sua
+            if (!data.id) {   //truyen id truoc khi sua
                 resolve({
                     errCode: 2,
                     errMessage: 'Missing required parameter'
                 })
             }
             let user = await db.User.findOne({ //neu tim thay user
-                where: {id: data.id},
+                where: { id: data.id },
                 raw: false
             })
-            if (user ){
+            if (user) {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
                 user.address = data.address;
@@ -192,10 +193,36 @@ let updateUserData = (data) => {
     })
 }
 
+let getAllCodeService = (typeInput) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!typeInput) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing required parameter',
+                })
+
+            } else {
+                let res = {};
+                let allcode = await db.Allcode.findAll({
+                    where: { type: typeInput }
+                });
+                res.errCode = 0;
+                res.data = allcode;
+                resolve(res);
+            }
+
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,
     deleteUser: deleteUser,
     updateUserData: updateUserData,
+    getAllCodeService: getAllCodeService,
 }
