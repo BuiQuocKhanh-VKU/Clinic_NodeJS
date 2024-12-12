@@ -1,6 +1,7 @@
+import bcrypt from 'bcryptjs';
 import db from '../models/index';
-
-
+import { raw } from 'body-parser';
+import { up } from '../seeders/seeder-users';
 
 let getTopDoctorHome = (limitInput) => {
 	return new Promise(async (resolve, reject) => {
@@ -31,7 +32,58 @@ let getTopDoctorHome = (limitInput) => {
 }
 
 
+let getAllDoctors = () => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			let doctors = await db.User.findAll({
+				where: { roleId: 'R2' },
+				attributes: {
+					exclude: ['password', 'image']//loai bo password ra khoi du lieu tra ve
+				},
+			})
+
+			resolve({  //=return
+				errCode: 0,
+				data: doctors
+			})
+		} catch (e) {
+			reject(e);
+		}
+	})
+}
+
+
+let saveDetailInforDoctor = (inputData) => {
+	return new Promise(async (resolve, reject) => {
+		try {
+			if (!inputData.doctorId || !inputData.contentHTML || !inputData.contentMarkdown) {
+				resolve({
+					errCode: 1,
+					errMessage: 'Missing required parametersss'
+				}) 
+			} else {
+				await db.Markdown.create({
+					contentHTML: inputData.contentHTML,
+					contentMarkdown: inputData.contentMarkdown,
+					description: inputData.description,
+					doctorId: inputData.doctorId,
+				})
+
+				resolve({
+					errCode: 0,
+					errMessage: 'Save infor doctor success'
+				})
+			}
+
+		} catch (e) {
+			reject(e);
+
+		}
+	})
+}
 
 module.exports = {
-getTopDoctorHome: getTopDoctorHome,
+	getTopDoctorHome: getTopDoctorHome,
+	getAllDoctors: getAllDoctors,
+	saveDetailInforDoctor: saveDetailInforDoctor,
 };
