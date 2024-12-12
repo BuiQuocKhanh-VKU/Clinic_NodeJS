@@ -159,7 +159,7 @@ let deleteUser = (userId) => {   //tim nguoi dung trc khi xoa
 let updateUserData = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!data.id) {   //truyen id truoc khi sua
+            if (!data.id || !data.roleId || !data.positionId || !data.gender)  {   //truyen id truoc khi sua
                 resolve({
                     errCode: 2,
                     errMessage: 'Missing required parameter'
@@ -173,6 +173,10 @@ let updateUserData = (data) => {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
                 user.address = data.address;
+                user.roleId = data.roleId;
+                user.positionId = data.positionId;
+                user.gender = data.gender;
+                user.phonenumber = data.phonenumber;
 
                 await user.save();
 
